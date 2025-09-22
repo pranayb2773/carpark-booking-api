@@ -10,7 +10,6 @@ A Laravel 12 (PHP 8.2) REST API for checking car park availability, calculating 
 - PHP >= 8.2
 - Composer
 - SQLite (default/dev) or another database supported by Laravel
-- Node.js and npm (optional, only for running the frontend/Vite dev tasks in the provided dev script)
 
 ## Quick start
 1. Clone the repo, then install dependencies:
