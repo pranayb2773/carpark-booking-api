@@ -1,0 +1,466 @@
+{
+	"info": {
+		"_postman_id": "b6bb95ad-8a61-4950-bc7a-2c1e72548595",
+		"name": "Car Park Book API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25292756"
+	},
+	"item": [
+		{
+			"name": "v1",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Set access token\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.environment.set(\"access_token\", jsonData.data.token);",
+											"});"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "{{email}}",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_uri}}/api/v1/login",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "pranay.baddam@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "Pranay2773",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "Pranay2773",
+											"type": "text"
+										},
+										{
+											"key": "date_of_birth",
+											"value": "1996-09-02",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Pranay Baddam",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_uri}}/api/v1/register",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_uri}}/api/v1/logout",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Profile",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_uri}}/api/v1/profile",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Booking By ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_uri}}/api/v1/bookings/:id",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"bookings",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Booking",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_uri}}/api/v1/bookings/:id",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"bookings",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "51"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Booking",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "from_date",
+											"value": "2025-09-24",
+											"type": "text"
+										},
+										{
+											"key": "to_date",
+											"value": "2025-09-25",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_uri}}/api/v1/bookings/",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"bookings",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Booking",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"from_date\": \"2025-09-23\",\n    \"to_date\": \"2025-09-25\",\n    \"status\": 1\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_uri}}/api/v1/bookings/:id",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"bookings",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "52"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Bookings",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "from_date",
+											"value": "2025-09-22",
+											"type": "text"
+										},
+										{
+											"key": "to_date",
+											"value": "2025-09-30",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_uri}}/api/v1/bookings/",
+									"host": [
+										"{{base_uri}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"bookings",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Price Calculator",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_uri}}/api/v1/price?from_date=2025-11-22&to_date=2025-12-28",
+							"host": [
+								"{{base_uri}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"price"
+							],
+							"query": [
+								{
+									"key": "from_date",
+									"value": "2025-11-22"
+								},
+								{
+									"key": "to_date",
+									"value": "2025-12-28"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Car Park Space Avialability",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_uri}}/api/v1/availability?from_date=2025-09-25&to_date=2025-09-26",
+							"host": [
+								"{{base_uri}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"availability"
+							],
+							"query": [
+								{
+									"key": "from_date",
+									"value": "2025-09-25"
+								},
+								{
+									"key": "to_date",
+									"value": "2025-09-26"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
