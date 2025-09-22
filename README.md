@@ -84,6 +84,21 @@ If you run `php artisan migrate --seed`, these demo accounts are created for qui
 - Admin: admin@carpark.com / password
 - Customer: customer@example.com / customer123
 
+## Postman collection
+A ready-to-use Postman collection is included in the repository root:
+- Car Park Book API.postman_collection.json
+
+How to use:
+1. Open Postman → File → Import → Choose the JSON file above.
+2. Set your base URL to http://127.0.0.1:8000 (php artisan serve default) or your own host/port.
+3. Authenticate:
+   - First call POST /api/v1/login (or /api/v1/register) using the demo credentials above to get a token.
+   - Copy the returned token value.
+4. In Postman, set Authorization to Bearer Token and paste the token (you can set it at the collection level so it applies to all protected requests).
+5. Use the public endpoints (price, availability) and the authenticated bookings endpoints.
+
+Tip: You can create a Postman Environment with variables like base_url and token, then reference them in requests as {{base_url}} and {{token}}.
+
 ## Public endpoints
 
 ### Check price
