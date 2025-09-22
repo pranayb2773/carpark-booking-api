@@ -57,11 +57,6 @@ final class User extends Authenticatable
         $this->bookings()->where('status', BookingStatus::ACTIVE);
     }
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
     protected function casts(): array
     {
         return [
